@@ -111,7 +111,8 @@ class Client {
 		return array_merge(array(
 			'Content-Type' => 'application/json',
 			'X-App-Id' => $this->credentials['app_id'],
-			'X-App-Key' => $this->credentials['key']
+			'X-App-Key' => $this->credentials['key'],
+			'User-Agent' => 'hook-php'
 		), $concat);
 
 	}
