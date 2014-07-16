@@ -78,7 +78,7 @@ class Collection {
 		return $this->client->post($this->segments, $data);
 	}
 
-	public function where($field, $_operation = null, $_value = null) {
+	public function where($field, $_operation = null, $_value = null, $operation = 'and') {
 		$operation = (is_null($_value)) ? "=" : $_operation;
 		$value = (is_null($_value)) ? $_operation : $_value;
 
@@ -88,13 +88,17 @@ class Collection {
 					$operation = $value[0];
 					$value = $value[1];
 				}
-				$this->addWhere($field, $operation, $value);
+				$this->addWhere($field, $operation, $value, $operation);
 			}
 		} else {
-			$this->addWhere($field, $operation, $value);
+			$this->addWhere($field, $operation, $value, $operation);
 		}
 
 		return $this;
+	}
+
+	public function orWhere($field, $_operation = null, $_value = null) {
+		return $this->where($field, $_operation, $_value, 'or');
 	}
 
 	public function get() {
@@ -103,6 +107,16 @@ class Collection {
 
 	public function find($_id) {
 		return $this->client->get($this->segments . '/' . $_id, $this->buildQuery());
+	}
+
+	public function select() {
+		$this->options['select'] = func_get_args();
+		return $this;
+	}
+
+	public function with() {
+		$this->options['with'] = func_get_args();
+		return $this;
 	}
 
 	public function group() {
@@ -231,7 +245,9 @@ class Collection {
 			'first' => 'f',
 			'aggregation' => 'aggr',
 			'operation' => 'op',
-			'data' => 'data'
+			'data' => 'data',
+			'with' => 'with',
+			'select' => 'select'
 		);
 
 		foreach($shortnames as $field => $shortname) {
