@@ -155,7 +155,9 @@ class Collection {
 	}
 
 	public function firstOrCreate($data) {
-		throw new Exception("Not implemented.");
+		$this->options['first'] = 1;
+		$this->options['data'] = $data;
+		return $this->client->post($this->segments, $this->buildQuery());
 	}
 
 	public function sort(string $field, bool $direction = null) {
