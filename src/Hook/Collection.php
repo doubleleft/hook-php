@@ -160,7 +160,7 @@ class Collection {
 		return $this->client->post($this->segments, $this->buildQuery());
 	}
 
-	public function sort(string $field, bool $direction = null) {
+	public function sort($field, $direction = null) {
 		if (is_null($direction)) {
 			$direction = 'asc';
 		} else if (is_int($direction)) {
