@@ -57,7 +57,7 @@ class Collection {
 	 */
 	protected $offset;
 
-	public function __construct(array $options) {
+	public function __construct($options) {
 		$this->name = $options['name'];
 		$this->client = isset($options['client']) ? $options['client'] : Client::getInstance();
 		$this->segments = 'collection/' . $this->name;
@@ -74,7 +74,7 @@ class Collection {
 		return $this;
 	}
 
-	public function create(array $data) {
+	public function create($data) {
 		return $this->client->post($this->segments, $data);
 	}
 
@@ -192,8 +192,8 @@ class Collection {
 		return $this->client->remove($path, $this->buildQuery());
 	}
 
-	public function update($_id, array $data = null) {
-		if (!is_null($data)) {
+	public function update($_id, $data = null) {
+		if (is_null($data)) {
 			return $this->updateAll($_id);
 		} else {
 			return $this->client->post($this->segments . '/' . $_id, $data);
@@ -210,7 +210,7 @@ class Collection {
 		return $this->client->put($this->segments, $this->buildQuery());
 	}
 
-	public function updateAll(array $data) {
+	public function updateAll($data) {
 		$this->options['data'] = $data;
 		return $this->client->put($this->segments, $this->buildQuery());
 	}
