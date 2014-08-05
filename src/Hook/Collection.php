@@ -124,8 +124,8 @@ class Collection {
 		return $this;
 	}
 
-	public function count() {
-		$this->options['aggregation'] = array('method' => 'count', 'field' => null);
+	public function count($field = '*') {
+		$this->options['aggregation'] = array('method' => 'count', 'field' => $field);
 		return $this->get();
 	}
 
