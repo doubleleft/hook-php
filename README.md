@@ -1,7 +1,7 @@
 hook-php
 ===
 
-Hook PHP Client.
+PHP client for [hook](https://github.com/doubleleft/hook).
 
 Different from JavaScript client, there is no callback. Every request is
 synchronous.
@@ -26,4 +26,4 @@ $hook->collection('scores')->create(array(
 License
 ---
 
-MIT. See license file.
+MIT
