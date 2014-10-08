@@ -160,7 +160,7 @@ class Collection {
 		return $this->client->post($this->segments, $this->buildQuery());
 	}
 
-	public function sort(string $field, bool $direction = null) {
+	public function sort($field, $direction = null) {
 		if (is_null($direction)) {
 			$direction = 'asc';
 		} else if (is_int($direction)) {
@@ -193,11 +193,7 @@ class Collection {
 	}
 
 	public function update($_id, array $data = null) {
-		if (!is_null($data)) {
-			return $this->updateAll($_id);
-		} else {
-			return $this->client->post($this->segments . '/' . $_id, $data);
-		}
+		return $this->client->post($this->segments . '/' . $_id, $data);
 	}
 
 	public function increment($field, $value) {

@@ -20,7 +20,7 @@ class CollectionTest extends TestCase {
 		$six = $this->client->collection('scores')->create(array('name' => "Six", 'score' => 75));
 
 		// filters
-		$filtering = $this->client->collection('scores')->where('name', 'Two')->get();
+		$filtering = $this->client->collection('scores')->sort('name', 1)->where('name', 'Two')->get();
 		$this->assertTrue(count($filtering) == 1);
 		$this->assertTrue($filtering[0]['name'] == 'Two');
 
@@ -30,6 +30,9 @@ class CollectionTest extends TestCase {
 		$count = $this->client->collection('scores')->where('score', '<=', '100')->count();
 		$this->assertTrue($count == 4);
 
+		$this->client->collection('scores')->sort('score', -1)->updateAll(array('name' => "Top"));
+		$updated = $this->client->collection('scores')->update($six['_id'], array('name' => "Six updated"));
+		$this->assertTrue($updated['name'] == "Six updated");
 	}
 
 }

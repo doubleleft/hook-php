@@ -9,8 +9,7 @@ class Keys {
 	}
 
 	public function get($key) {
-		$entry = $this->client->get('key/' . $key);
-		return isset($entry['value']) ? $entry['value'] : null;
+		return $this->client->get('key/' . $key);
 	}
 
 	public function set($key, $value) {

@@ -6,8 +6,8 @@ class TestCase extends PHPUnit_Framework_TestCase {
 	public function setUp() {
 		$this->client = Hook\Client::configure(array(
 			'app_id' => 1,
-			'key' => '006f04b4f723c9920e259a746f9318be',
-			'endpoint' => 'http://dl-api.dev/index.php/'
+			'key' => '5ddf09ad42863cee82e640645c27b1e4',
+			'endpoint' => 'http://hook-stuff.dev/hook/public/index.php/'
 		));
 		parent::setUp();
 	}

@@ -9,9 +9,9 @@ class KeysTest extends TestCase {
 
 		// get/set
 		$this->client->keys->set('float', 5.5);
-		$this->assertTrue($this->client->keys->get('float') === '5.5');
+		$this->assertTrue($this->client->keys->get('float') === 5.5);
 		$this->client->keys->set('integer', 500);
-		$this->assertTrue($this->client->keys->get('integer') === '500');
+		$this->assertTrue($this->client->keys->get('integer') === 500);
 		$this->client->keys->set('string', "Hello world!");
 		$this->assertTrue($this->client->keys->get('string') === 'Hello world!');
 	}
