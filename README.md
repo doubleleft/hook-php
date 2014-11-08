@@ -1,4 +1,4 @@
-hook-php ![Build status](https://travis-ci.org/doubleleft/hook-php.svg?branch=master)
+hook-php [![Build status](https://travis-ci.org/doubleleft/hook-php.svg?branch=master)](https://travis-ci.org/doubleleft/hook-php/)
 ===
 
 PHP client for [hook](https://github.com/doubleleft/hook).
