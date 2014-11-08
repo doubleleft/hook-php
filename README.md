@@ -1,4 +1,4 @@
-hook-php
+hook-php ![Build status](https://travis-ci.org/doubleleft/hook-php.svg?branch=master)
 ===
 
 PHP client for [hook](https://github.com/doubleleft/hook).
@@ -6,7 +6,7 @@ PHP client for [hook](https://github.com/doubleleft/hook).
 Different from JavaScript client, there is no callback. Every request is
 synchronous.
 
-How to use
+How to use ([API Reference](http://doubleleft.github.io/hook-php))
 ---
 
 ```php
@@ -14,7 +14,7 @@ How to use
 $hook = Hook\Client::configure(array(
   'app_id' => 1,
   'key' => '006f04b4f723c9920e259a746f9318be',
-  'endpoint' => 'http://dl-api.dev/index.php/'
+  'endpoint' => 'http://hook.dev/index.php/'
 ));
 
 $hook->collection('scores')->create(array(

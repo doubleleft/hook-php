@@ -2,8 +2,13 @@
 
 class CollectionTest extends TestCase {
 
+	public function setUp() {
+		parent::setUp();
+		// remove possible previously created items
+		try { $this->client->collection('scores'); } catch(\Exception $e) {}
+	}
+
 	public function testGeneralMethods() {
-		$this->client->collection('scores')->remove();
 
 		// create
 		$one = $this->client->collection('scores')->create(array(

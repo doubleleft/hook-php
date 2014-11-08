@@ -1,0 +1,23 @@
+language: php
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+
+before_script:
+  # install hook server
+  - git clone --depth=1 https://github.com/doubleleft/hook.git
+  - travis_retry composer self-update
+  - travis_retry composer install --no-dev --prefer-dist -d hook
+  - cd ./hook && sh ./.travis/install_server.sh && cd -
+
+  # create default app for testing
+  - curl -XPOST http://hook.dev/index.php/apps --data '{"app":{"name":"hook-php"}}' > tests/app.json
+
+  # install javascript dependencies and compile dist files
+  - composer install
+
+script:
+  - ./vendor/bin/phpunit
+

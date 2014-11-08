@@ -104,6 +104,7 @@ class Client {
 		return $client->{$method}($this->credentials['endpoint'] . $segments, array(
 			'headers' => $this->getHeaders(),
 			'body' => $body,
+			'exceptions' => false
 		))->json();
 	}
 
